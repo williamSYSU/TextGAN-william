@@ -27,12 +27,12 @@ else:
     print('Missing argument: job_id and gpu_id. Use default job_id: {}, gpu_id: {}'.format(job_id, gpu_id))
 
 # Executables
-executable = 'python'  # specify your own python interpreter path here
+executable = 'python3'  # specify your own python interpreter path here
 rootdir = '../'
 scriptname = 'main.py'
 
 # ===Program===
-if_test = int(False)
+if_test = int(True)
 run_model = 'cot'
 CUDA = int(True)
 oracle_pretrain = int(True)
@@ -43,9 +43,13 @@ ADV_train_epoch = 20000
 tips = 'CoT experiments'
 
 # ===Oracle  or Real===
-if_real_data = [int(False), int(True), int(True)]
-dataset = ['oracle', 'image_coco', 'emnlp_news']
-vocab_size = [5000, 0, 0]
+# if_real_data = [int(False), int(True), int(True)]
+# dataset = ['oracle', 'image_coco', 'emnlp_news']
+# vocab_size = [5000, 0, 0]
+
+if_real_data = [int(True)]
+dataset = ['psoe_tweets']
+vocab_size = [5000]
 
 # ===Basic Param===
 data_shuffle = int(False)

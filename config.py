@@ -14,7 +14,7 @@ import re
 import torch
 
 # ===Program===
-if_test = False
+if_test = True
 CUDA = True
 multi_gpu = False
 if_save = True

@@ -12,6 +12,9 @@ from subprocess import call
 
 import os
 
+os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
+# os.environ["PYTORCH_USE_CUDA_DSA"] = "1"
+
 # Job id and gpu_id
 if len(sys.argv) > 2:
     job_id = int(sys.argv[1])
@@ -27,12 +30,12 @@ else:
     print('Missing argument: job_id and gpu_id. Use default job_id: {}, gpu_id: {}'.format(job_id, gpu_id))
 
 # Executables
-executable = 'python'  # specify your own python interpreter path here
+executable = 'python3'  # specify your own python interpreter path here
 rootdir = '../'
 scriptname = 'main.py'
 
 # ===Program===
-if_test = int(False)
+if_test = int(True)
 run_model = 'leakgan'
 CUDA = int(True)
 oracle_pretrain = int(True)
@@ -44,9 +47,13 @@ inter_epoch = 10
 tips = 'LeakGAN experiments'
 
 # ===Oracle  or Real===
-if_real_data = [int(False), int(True), int(True)]
-dataset = ['oracle', 'image_coco', 'emnlp_news']
-vocab_size = [5000, 0, 0]
+# if_real_data = [int(False), int(True), int(True)]
+# dataset = ['oracle', 'image_coco', 'emnlp_news']
+# vocab_size = [5000, 0, 0]
+
+if_real_data = [int(True)]
+dataset = ['psoe_tweets']
+vocab_size = [5000]
 
 # ===Basic Param===
 data_shuffle = int(False)
@@ -90,7 +97,7 @@ args = [
     '--if_test', if_test,
     '--run_model', run_model,
     '--cuda', CUDA,
-    # '--device', gpu_id,  # comment for auto GPU
+    '--device', gpu_id,  # comment for auto GPU
     '--ora_pretrain', oracle_pretrain,
     '--gen_pretrain', gen_pretrain,
     '--dis_pretrain', dis_pretrain,

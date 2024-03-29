@@ -17,7 +17,7 @@ import config as cfg
 from metrics.basic import Metrics
 from utils.text_process import write_tokens
 
-kenlm_path = '/home/zhiwei/kenlm'  # specify the kenlm path
+kenlm_path = '/home/joselu/TFG/kenlm'  # specify the kenlm path
 
 
 class PPL(Metrics):
