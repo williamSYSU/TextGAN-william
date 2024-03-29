@@ -227,3 +227,4 @@ python3 run_seqgan.py 0 0
 
 **MIT lincense**
 
+# TFG
