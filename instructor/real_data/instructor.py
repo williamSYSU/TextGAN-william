@@ -40,8 +40,8 @@ class BasicInstructor:
         try:
             self.train_data = GenDataIter(cfg.train_data)
             self.test_data = GenDataIter(cfg.test_data, if_test_data=True)
-        except:
-            pass
+        except Exception as e:
+            print(f'Could not load train and test data: {e}')
 
         try:
             self.train_data_list = [GenDataIter(cfg.cat_train_data.format(i)) for i in range(cfg.k_label)]
@@ -52,8 +52,8 @@ class BasicInstructor:
 
             self.train_samples_list = [self.train_data_list[i].target for i in range(cfg.k_label)]
             self.clas_samples_list = [self.clas_data_list[i].target for i in range(cfg.k_label)]
-        except:
-            pass
+        except Exception as e:
+            print(f'Could not create train_samples_list and class_samples_list: {e}')
 
         # Criterion
         self.mle_criterion = nn.NLLLoss()
